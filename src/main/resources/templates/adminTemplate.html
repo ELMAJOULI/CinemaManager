@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Administration</title>
+    <link rel="stylesheet" th:href="@{/style.css}"  type="text/css"  >
+</head>
+<body class="App">
+<header>
+    <div class="header">
+        <button class="btn btn-burgger">&#9776;</button>
+        <h2 ><a class="brand-name" href="http://localhost:3000/">ELMAJOULI</a></h2>
+        <h4 class="admin">Administration</h4>
+        <h4 sec:authorize="isAuthenticated()" class="admin"><a  class="admin" th:href="@{/logout}">Logout</a></h4>
+    </div>
+</header>
+<main >
+    <div class="grid-admin">
+        <div class="admin-control">
+            <ul class="admin-card">
+                <li style="font-size: 1.5rem;font-weight: bold; color: royalblue">Administration :</li>
+                <li class="admin-item" ><a href="/secured/addCity">City </a></li>
+                <li class="admin-item" ><a href="/secured/addCinema">Cinema </a></li>
+                <li class="admin-item" ><a href="/secured/addRoom">Room </a></li>
+                <li class="admin-item" ><a href="/secured/addMovie">Movie </a></li>
+                <li class="admin-item" ><a href="/secured/addGenre">Genre </a></li>
+                <li class="admin-item" ><a href="/secured/addMovieProjection">Movie Projection</a></li>
+                <li style="font-size: 1.5rem;font-weight: bold; color: royalblue">Update and Delete :</li>
+                <li class="admin-item" ><a href="/secured/listCity">City </a></li>
+                <li class="admin-item" ><a href="/secured/listCinema">Cinema </a></li>
+                <li class="admin-item" ><a href="/secured/listRoom">Room </a></li>
+                <li class="admin-item" ><a href="/secured/listMovie">Movie </a></li>
+                <li class="admin-item" ><a href="/secured/listGenre">Genre </a></li>
+                <li class="admin-item" ><a href="/secured/listMovieProjection">Movie Projection</a></li>
+            </ul>
+        </div>
+        <div layout:fragment="main">
+
+        </div>
+    </div>
+</main>
+<footer>
+    <h4>All right reserved &copy;</h4>
+</footer>
+<script th:src="@{/app.js}" defer type="text/javascript"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="adminTemplate">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie</title>
+</head>
+<body>
+<div layout:fragment="main">
+    <div class="item-container">
+        <table class="item-table">
+            <thead class="item-table-head">
+            <tr class="row">
+                <th>Id</th>
+                <th>Title</th>
+                <th>Genre</th>
+                <th>Duration</th>
+                <th>Director</th>
+                <th style="text-align: right; padding: .8rem 0;"><input type="search" name="key" id="key"></th>
+                <th style="text-align: left;padding: .8rem 0;"><button>Search</button></th>
+            </tr>
+            </thead>
+            <tbody class="item-table-body">
+            <tr class="row" th:each="movie : ${movies}">
+                <td th:text="${movie.getId()}"></td>
+                <td th:text="${movie.getTitle()}"></td>
+                <td th:text="${movie.getGenre().getGenre()}"></td>
+                <td th:text="${movie.getDuration()}+' min'"></td>
+                <td th:text="${movie.getDirector()}"></td>
+                <td><a class="link-btn link-btn-delete" th:href="@{deleteMovie(id=${movie.getId()})}">Delete</a></td>
+                <td><a class="link-btn link-btn-update"  th:href="@{updateMovie(id=${movie.getId()})}">Update</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

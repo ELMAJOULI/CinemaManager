@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="adminTemplate">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="main">
+    <div class="form-control">
+        <form method="post" action="/secured/addMovie" >
+            <div class="card-form">
+
+                <div class="add-movie-form" >
+
+                    <label class="label-form" for="title">Title : </label>
+                    <input class="input-form" type="text" placeholder="Movie Title ..." id="title" name="title">
+                    <label class="label-form" for="poster">Poster URL :</label>
+                    <input class="input-form" type="text" name="poster" id="poster" placeholder="Poster URL ...">
+                    <label class="label-form" for="genre">Genre : </label>
+                    <select class="input-form" name="genre" id="genre" >
+                        <option th:each="genre : ${genres}" th:value="${genre.getId()}" th:text="${genre.getGenre()}"></option>
+                    </select>
+                    <label class="label-form" for="details">Details :</label>
+                    <input class="input-form" type="text" name="details" id="details" placeholder="Details ...">
+                    <label class="label-form" for="duration">Duration :</label>
+                    <input class="input-form" type="number" name="duration" id="duration" placeholder="Duration">
+                    <label class="label-form" for="director">Director :</label>
+                    <input class="input-form" type="text" name="director" id="director" placeholder="Director ...">
+                    <label class="label-form" for="releaseDate">Release Date :</label>
+                    <input class="input-form" type="date" name="releaseDate" id="releaseDate">
+                </div>
+                <div class="btn-container">
+                    <button class="btn btn-form btn-add" type="submit">Add</button>
+                    <button class="btn btn-form btn-cancel" type="reset">Cancel</button>
+                </div>
+
+            </div>
+
+
+        </form>
+    </div>
+</div>
+</body>
+</html>

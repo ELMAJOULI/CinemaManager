@@ -1,0 +1,274 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+/*****Grid configuration********/
+
+.App {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 4rem 1fr 6rem;
+    grid-template-areas:
+            "header"
+            "main"
+            "footer";
+    height: 100vh;
+}
+header {
+    grid-area: header;
+    border: 1px solid royalblue;
+    box-shadow: 4px 4px 4px #ccc;
+}
+main {
+    grid-area: main;
+}
+footer {
+    grid-area: footer;
+    text-align: center;
+    background-color: rgb(39, 39, 39);
+    color: white;
+    border: 1px solid rgb(77, 77, 80);
+    box-shadow: 4px -4px 4px #ccc;
+}
+li {
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+
+/*****Header Styling *******/
+
+.header {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: royalblue;
+}
+.brand-name {
+    margin-left: 0.5rem;
+    font-family: "Lemonada", cursive;
+    color: white;
+    cursor: pointer;
+}
+.brand-name:hover {
+    color: rgb(250, 56, 88);
+}
+.btn {
+    padding: 1rem;
+    cursor: pointer;
+}
+.btn-burgger {
+    padding: 0.5rem 1rem;
+    font-size: 2rem;
+    font-weight: bold;
+    background-color: transparent;
+    border: none;
+    color: white;
+}
+.btn-burgger:hover {
+    color: rgb(250, 56, 88);
+}
+.admin{
+    color: white;
+    margin-left: 2rem;
+    cursor: pointer;
+}
+.admin:hover{
+    color: rgb(250, 56, 88);
+}
+.admin-hide{
+    display: none;
+}
+/*************** adminisrtation style **********/
+
+/*************** main style *****************/
+
+.grid-admin{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas: "form control";
+    height: 100%;
+}
+.admin-control{
+    grid-area: "control";
+    border: 1px black solid;
+    width: 100%;
+    height: 100%;
+}
+.form-control{
+    grid-area: "form";
+    border: 1px black solid;
+    width: 100%;
+    height: 100%;
+}
+.admin-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.admin-item{
+    margin-top: 1.5rem;
+    width: 100%;
+}
+
+/********************* form *******************/
+
+.label-form{
+    font-weight: bold;
+    color: rgb(75, 74, 74);
+    font-family: sans-serif;
+    margin-top: .5rem;
+}
+.input-form{
+    border: none;
+    padding: .6rem;
+    border-bottom: 1px black solid;
+    margin-top: .5rem;
+}
+.input-form:focus{
+    border-color: red;
+}
+
+.add-movie-form{
+    display: flex;
+    flex-direction: column;
+    padding: 1.3rem;
+    width: 100%;
+}
+.card-form{
+    border: 1px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    box-shadow: 4px -4px 4px #ccc,
+    -4px 4px 4px #ccc;
+}
+.btn-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-form{
+    margin: 1rem;
+    width: 9rem;
+    border-radius: 10px;
+    font-weight: bold;
+}
+.btn-add{
+    background-color: green;
+    color: white;
+}
+.btn-cancel{
+    background-color: #ccc;
+    color: rgb(39, 39, 39);
+}
+/********* listing itmems *********/
+
+.item-container{
+    display: flex;
+    flex-direction: column-reverse;
+    width: 100%;
+}
+.item-table{
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 400px;
+    text-align: center;
+    margin: 1rem;
+    border-radius: 10px;
+    box-shadow: 4px 4px 4px #ccc,  -4px -4px 4px #ccc ;
+    overflow: hidden;
+}
+.item-table-head tr{
+    background-color: royalblue;
+    color: white;
+    font-weight: bold;
+}
+th ,td{
+    padding: .8rem;
+    font-weight: bold;
+    position: relative;
+}
+.item-table-body tr{
+    border-bottom: 1px solid #ccc;
+    color: rgb(90, 89, 89);
+}
+.item-table-body tr:nth-of-type(even){
+    background-color: rgb(241, 236, 236);
+}
+.item-table-body tr:last-of-type{
+    border-bottom: 2px solid royalblue;
+
+}
+.link-btn{
+    border-radius: 10px;
+    padding: .5rem 1rem;
+    background-color: rgb(219, 13, 13);
+    color: white;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px #ccc,  -2px -2px 2px #ccc ;
+    position: relative;
+}
+.link-btn-update{
+    background-color: rgb(9, 129, 9);
+}
+.link-btn:active {
+    top: 2px;
+}
+
+
+/****************** pagination stiling ************/
+
+
+.page {
+    display: flex;
+    align-content: flex-start;
+    list-style: none;
+    margin: 1rem 0;
+}
+
+.page li a {
+    font: inherit;
+    padding: 0.3rem 1rem;
+    margin: 0.1rem;
+    border: 1px solid rgb(89, 132, 252);
+    border-radius: 6px;
+    color: white;
+    text-decoration: none;
+    background-color: rgb(89, 132, 252);
+    cursor: pointer;
+}
+
+.page li .selected {
+    background-color: red;
+    border-color: red;
+    box-shadow: 1px 2px 2px red;
+}
+
+.page li .selected:hover {
+    background-color: rgb(235, 69, 69);
+    border-color: rgb(243, 75, 75);
+    box-shadow: 1px 2px 2px rgb(243, 74, 74);
+}
+
+.page li a:hover {
+    background-color: rgb(122, 156, 248);
+}

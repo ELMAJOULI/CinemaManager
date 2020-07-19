@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="adminTemplate">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Projection</title>
+</head>
+<body>
+<div layout:fragment="main">
+    <div class="item-container">
+        <table class="item-table">
+            <thead class="item-table-head">
+            <tr class="row">
+                <th>Id</th>
+                <th>Date of Projection</th>
+                <th>Movie Title</th>
+                <th>Room</th>
+                <th>Price</th>
+                <th style="text-align: right; padding: .8rem 0;"><input type="search" name="key" id="key"></th>
+                <th style="text-align: left;padding: .8rem 0;"><button>Search</button></th>
+            </tr>
+            </thead>
+            <tbody class="item-table-body">
+            <tr class="row" th:each="movieProj : ${movieProjections}">
+                <td th:text="${movieProj.getId()}"></td>
+                <td th:text="${movieProj.getProjectionDate()}+' '+${movieProj.getSeance().getScheduled()}"></td>
+                <td th:text="${movieProj.getMovie().getTitle()}"></td>
+                <td th:text="${movieProj.getRoom().getName()}"></td>
+                <td th:text="${movieProj.getPrice()}+' Dh'"></td>
+                <td><a class="link-btn link-btn-delete" th:href="@{deleteMovieProjection(id=${movieProj.getId()})}">Delete</a></td>
+                <td><a class="link-btn link-btn-update" href="#">Update</a></td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <ul class="page">
+
+            </ul>
+            </tfoot>
+
+        </table>
+
+    </div>
+
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        let pagesNb =  /*[[${pagesNb}]]*/ 1;
+        let size = /*[[${size}]]*/ 2;
+        let keyword = /*[[${keyword}]]*/ '';
+        let url = '/listMovieProjection?size='+size+'&keyword='+keyword+'&page=';
+        const pages = [];
+        for (let i = 0; i < pagesNb; i++) {
+            pages.push(url);
+        }
+
+        /*]]>*/
+    </script>
+</div>
+</body>
+</html>

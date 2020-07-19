@@ -1,0 +1,48 @@
+
+
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="adminTemplate">
+<head>
+    <meta charset="UTF-8">
+    <title>Cinema</title>
+</head>
+<body>
+<div layout:fragment="main">
+    <div class="form-control">
+        <form method="post" action="/secured/addCinema" >
+            <div class="card-form">
+                <div class="add-movie-form">
+                    <label class="label-form" for="name">Cinema name : </label>
+                    <input class="input-form" type="text" placeholder="Cinema Name ..." id="name" name="name">
+
+                    <label class="label-form" for="city">City : </label>
+                    <select class="input-form" name="city" id="city" >
+                        <option th:each="city : ${cities}" th:value="${city.getId()}" th:text="${city.getName()}"></option>
+                    </select>
+
+                    <label class="label-form" for="roomsNumber">Rooms Number :</label>
+                    <input class="input-form" type="number" name="roomsNumber" id="roomsNumber" placeholder="Rooms Number ...">
+
+                    <label class="label-form" for="longitude">Longitude :</label>
+                    <input class="input-form" type="number" name="longitude" id="longitude" placeholder="Longitude ...">
+                    <label class="label-form" for="latitude">Latitude :</label>
+                    <input class="input-form" type="number" name="latitude" id="latitude" placeholder="Latitude ...">
+                    <label class="label-form" for="altitude">Altitude :</label>
+                    <input class="input-form" type="number" name="altitude" id="altitude" placeholder="Altitude ...">
+                </div>
+                <div class="btn-container">
+                    <button class="btn btn-form btn-add" type="submit">Add</button>
+                    <button class="btn btn-form btn-cancel" type="reset">Cancel</button>
+                </div>
+
+            </div>
+
+
+        </form>
+    </div>
+</div>
+</body>
+</html>

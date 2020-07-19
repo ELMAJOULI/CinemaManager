@@ -1,0 +1,379 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+a{
+  text-decoration: none;
+}
+/*****Grid configuration********/
+
+.App {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 4rem 1fr 6rem;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  height: 100vh;
+}
+header {
+  grid-area: header;
+  border: 1px solid royalblue;
+  box-shadow: 4px 4px 4px #ccc;
+}
+main {
+  grid-area: main;
+}
+footer {
+  grid-area: footer;
+  text-align: center;
+  background-color: rgb(39, 39, 39);
+  color: white;
+  border: 1px solid rgb(77, 77, 80);
+  box-shadow: 4px -4px 4px #ccc;
+}
+li {
+  list-style: none;
+}
+
+/*****Header Styling *******/
+
+.header {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: royalblue;
+}
+.brand-name {
+  margin-left: 0.5rem;
+  font-family: "Lemonada", cursive;
+  color: white;
+  cursor: pointer;
+}
+.brand-name:hover {
+  color: rgb(250, 56, 88);
+}
+.btn {
+  padding: 1rem;
+  cursor: pointer;
+}
+.btn-burgger {
+  padding: 0.5rem 1rem;
+  font-size: 2rem;
+  font-weight: bold;
+  background-color: transparent;
+  border: none;
+  color: white;
+}
+.btn-burgger:hover {
+  color: rgb(250, 56, 88);
+}
+/******* aside styling **************/
+
+aside {
+  position: absolute;
+  width: 20rem;
+  height: 100vh;
+  border: 1px solid #ccc;
+  box-shadow: 4px 4px 4px #ccc;
+  z-index: 10;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  display: none;
+}
+.aside-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  border: 1px solid black;
+  border-radius: 50%;
+  padding: 0.6rem;
+  cursor: pointer;
+}
+.aside-close:hover {
+  background-color: rgba(236, 44, 44, 0.87);
+  color: white;
+}
+/*************** Home styling *************************/
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.contents {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 1 25rem;
+  margin: 1rem;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 4px 4px 4px #ccc, -4px -4px 4px #ccc;
+  cursor: pointer;
+}
+.bg-image {
+  width: 100%;
+  height: 100%;
+  transition: all 1s ease-in;
+}
+.city-name {
+  background-color: rgba(65, 66, 66, 0.74);
+  color: white;
+  padding: 1rem;
+  position: absolute;
+  z-index: 1;
+  transition: all 1.5s ease-in;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 1.5s ease-in;
+}
+.card:hover {
+  transform: scale(1.2);
+}
+.city-name:hover {
+  transform: scale(0.8);
+  background-color: rgba(65, 66, 66, 0.911);
+}
+/************** Cinema styling **************/
+.cinema-grid {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 1fr;
+  width: 100%;
+  height: 100%;
+  column-gap: 10px;
+  grid-template-areas: "cinemaList cinemaListData";
+}
+
+.cinema-grid-list {
+  grid-area: cinemaList;
+}
+.cinema-grid-data {
+  grid-area: cinemaListData;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+/*************** cinemaList styling ****************/
+.cinemaList {
+  padding: 0;
+  list-style: none;
+  border: 1px solid rgb(122, 121, 121);
+  border-radius: 10px;
+  box-shadow: 4px 4px 4px #ccc, -4px 4px 4px #ccc;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.cinema {
+  border-bottom: 1px solid rgb(175, 175, 175);
+  padding: 1rem;
+  cursor: pointer;
+  flex: 1;
+  font-family: sans-serif;
+  font-weight: bold;
+  color: rgb(105, 105, 105);
+  text-align: center;
+}
+.cinema:hover {
+  background-color: rgb(201, 201, 201);
+}
+.cinemaSelected {
+  background-color: royalblue;
+  border-bottom: 1px solid rgb(175, 175, 175);
+  padding: 1rem;
+  cursor: pointer;
+  flex: 1;
+  font-family: sans-serif;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+}
+.cinemaSelected:hover {
+  background-color: rgb(101, 135, 236);
+}
+/*************** MovieList Styling **************/
+.movie-data-list {
+  padding: 0.5rem;
+}
+.container-room {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 4px 4px 4px #ccc, -4px 4px 4px #ccc;
+  padding: 10px;
+}
+.room-movie {
+  border-bottom: 1px solid #ccc;
+}
+.movie-container {
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+.movie-details-container {
+  padding-left: 1em;
+}
+.movie-img-star{
+  display: flex;
+  flex-direction: column;
+}
+.movie-image {
+  width: 10rem;
+  height: 14rem;
+  min-width: 10rem;
+  margin-bottom: .7rem;
+}
+.movie-details-description {
+  padding: 0.8rem;
+  max-height: 20rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+.movie-details-meta-container {
+  display: flex;
+  padding: 0.6rem;
+  justify-content: space-around;
+}
+.bold {
+  font-weight: bold;
+}
+/************* seance styling ***************/
+
+.seance-container{
+  display:flex;
+  flex-wrap: wrap;
+}
+.seance  {
+  border: 1px solid  #ccc;
+  border-radius: 10px;
+  width: max-content;
+  margin-top: 10px;
+  padding: 0 0;
+  height: max-content;
+}
+.seance-title{
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+  padding: .6rem;
+}
+.seance-item{
+  border-bottom: 1px solid #ccc;
+  padding: .6rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+.seance-item:hover {
+  background-color:orange;
+  color: white;
+}
+.seance-item-selected{
+  background-color: royalblue;
+  color: white;
+}
+.seat-container{
+  display: flex;
+  flex-wrap: wrap;
+  flex: 0 0 20rem;
+  justify-content: flex-start;
+  
+}
+.btn-seat{
+max-width: 1.5rem;
+height: 1rem;
+margin: 5px;
+color: white;
+background-color:rgb(6, 182, 6);
+border: 1px solid rgb(6, 182, 6);
+border-radius: 5px;
+box-shadow: 4px 4px 4px #ccc, -4px 4px 4px #ccc ;
+font-size: .8rem;
+font-weight: bold;
+}
+.btn-seat:hover{
+  background-color: rgb(229, 255, 0);
+  border: 1px solid rgb(229, 255, 0);
+}
+.btn-seat-reserved{
+  max-width: 1.5rem;
+height: 1rem;
+margin: 5px;
+color: rgb(54, 54, 54);
+background-color:#ccc;
+border: 1px solid #ccc;
+border-radius: 5px;
+box-shadow: 4px 4px 4px #ccc, -4px 4px 4px #ccc ;
+font-size: .8rem;
+font-weight: bold;
+cursor: not-allowed;
+}
+.btn-seat-selected{
+  background-color: orange;
+  border: 1px solid orange;
+}
+.ticket-form{
+ flex: 1 0 10rem;
+ display: flex;
+ flex-direction: column;
+ height: 15rem;
+ justify-content: space-around;
+}
+.btn-purchase{
+  width: 10rem;
+  border-radius: 10px;
+  color: white;
+  background-color: rgb(6, 182, 6);
+  border-color:rgb(6, 182, 6) ;
+  box-shadow: 4px 4px 4px #ccc, -4px 4px 4px #ccc ;
+ font-weight: bold;
+}
+.btn-purchase:hover{
+background-color: orange;
+border-color: orange;
+}
+.purchase-label{
+  font-weight: bold;
+}
+.purchase-input{
+  padding: .6rem;
+  border: none;
+  border-bottom: 1px  solid black;
+}
+.purchase-input:focus{
+  border-color: red;
+}

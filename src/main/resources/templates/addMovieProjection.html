@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="adminTemplate">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Projection</title>
+</head>
+<body>
+<div layout:fragment="main">
+    <div class="form-control">
+        <form method="post" action="/secured/addMovieProjection" >
+            <div class="card-form">
+                <div class="add-movie-form">
+                    <label class="label-form" for="projectionDate">Projection's date :</label>
+                    <input class="input-form" type="date" name="projectionDate" id="projectionDate">
+                    <label class="label-form" for="price">Price :</label>
+                    <input class="input-form" type="number" name="price" id="price" placeholder="price ...">
+
+                    <label class="label-form" for="room">Room : </label>
+                    <select class="input-form" name="room" id="room" >
+                        <option th:each="room : ${rooms}" th:value="${room.getId()}" th:text="${room.getCinema().getCity().getName()+', '+room.getCinema().getName()+', '+room.getName()}"></option>
+                    </select>
+
+                    <label class="label-form" for="movie">Movie : </label>
+                    <select class="input-form" name="movie" id="movie" >
+                        <option th:each="movie : ${movies}" th:value="${movie.getId()}" th:text="${movie.getTitle()}"></option>
+                    </select>
+
+                    <label class="label-form" for="seance">Seance : </label>
+                    <select class="input-form" name="seance" id="seance" >
+                        <option th:each="seance : ${seances}" th:value="${seance.getId()}" th:text="${seance.getScheduled()}"></option>
+                    </select>
+
+
+                </div>
+                <div class="btn-container">
+                    <button class="btn btn-form btn-add" type="submit">Add</button>
+                    <button class="btn btn-form btn-cancel" type="reset">Cancel</button>
+                </div>
+
+            </div>
+
+
+        </form>
+    </div>
+</div>
+</body>
+</html>

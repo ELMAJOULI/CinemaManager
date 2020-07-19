@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="adminTemplate">
+<head>
+    <meta charset="UTF-8">
+    <title>Room</title>
+</head>
+<body>
+<div layout:fragment="main">
+    <div class="form-control">
+        <form method="post" action="/secured/addRoom" >
+            <div class="card-form">
+                <div class="add-movie-form">
+                    <label class="label-form" for="name">Room's name : </label>
+                    <input class="input-form" type="text" placeholder="Room's Name ..." id="name" name="name">
+
+                    <label class="label-form" for="cinema">Cinema : </label>
+                    <select class="input-form" name="cinema" id="cinema" >
+                        <option th:each="cinema : ${cinemas}" th:value="${cinema.getId()}" th:text="${cinema.getCity().getName()+', '+cinema.getName()}"></option>
+                    </select>
+
+                    <label class="label-form" for="placeNumber">Number of seats :</label>
+                    <input class="input-form" type="number" name="placeNumber" id="placeNumber" placeholder="Number of seats ...">
+
+                </div>
+                <div class="btn-container">
+                    <button class="btn btn-form btn-add" type="submit">Add</button>
+                    <button class="btn btn-form btn-cancel" type="reset">Cancel</button>
+                </div>
+
+            </div>
+
+
+        </form>
+    </div>
+</div>
+</body>
+</html>
+
