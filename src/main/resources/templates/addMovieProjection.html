@@ -13,24 +13,25 @@
         <form method="post" action="/secured/addMovieProjection" >
             <div class="card-form">
                 <div class="add-movie-form">
+                    <input  type="number" name="id" th:value="${movieProjection == null ? null : movieProjection.getId()}" style="display: none">
                     <label class="label-form" for="projectionDate">Projection's date :</label>
-                    <input class="input-form" type="date" name="projectionDate" id="projectionDate">
+                    <input class="input-form" th:value="${movieProjection == null ? '' : movieProjection.getProjectionDate()}" type="date" name="projectionDate" id="projectionDate">
                     <label class="label-form" for="price">Price :</label>
-                    <input class="input-form" type="number" name="price" id="price" placeholder="price ...">
+                    <input class="input-form" th:value="${movieProjection == null ? '' : movieProjection.getPrice()}" type="number" name="price" id="price" placeholder="price ...">
 
                     <label class="label-form" for="room">Room : </label>
                     <select class="input-form" name="room" id="room" >
-                        <option th:each="room : ${rooms}" th:value="${room.getId()}" th:text="${room.getCinema().getCity().getName()+', '+room.getCinema().getName()+', '+room.getName()}"></option>
+                        <option th:each="room : ${rooms}" th:value="${room.getId()}" th:text="${room.getCinema().getCity().getName()+', '+room.getCinema().getName()+', '+room.getName()}"  th:selected="${movieProjection == null ? '':room.getId()==movieProjection.getRoom().getId()}"></option>
                     </select>
 
                     <label class="label-form" for="movie">Movie : </label>
                     <select class="input-form" name="movie" id="movie" >
-                        <option th:each="movie : ${movies}" th:value="${movie.getId()}" th:text="${movie.getTitle()}"></option>
+                        <option th:each="movie : ${movies}" th:value="${movie.getId()}" th:text="${movie.getTitle()}" th:selected="${movieProjection == null ? '':movie.getId()==movieProjection.getMovie().getId()}"></option>
                     </select>
 
                     <label class="label-form" for="seance">Seance : </label>
                     <select class="input-form" name="seance" id="seance" >
-                        <option th:each="seance : ${seances}" th:value="${seance.getId()}" th:text="${seance.getScheduled()}"></option>
+                        <option th:each="seance : ${seances}" th:value="${seance.getId()}" th:text="${seance.getScheduled()}" th:selected="${movieProjection == null ? '':seance.getId()==movieProjection.getSeance().getId()}"></option>
                     </select>
 
 

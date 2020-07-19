@@ -67,7 +67,10 @@ public class WebController {
 
     }
     @GetMapping("/addMovieProjection")
-    public String getMovieProjectionAdmin(Model model){
+    public String getMovieProjectionAdmin(@RequestParam(required = false) Long id ,Model model){
+        MovieProjection movieProjection = null;
+        if (id != null) movieProjection = movieProjectionRepository.findById(id).get();
+        model.addAttribute("movieProjection", movieProjection);
         model.addAttribute("rooms",roomRepository.findAll());
         model.addAttribute("movies",movieRepository.findAll());
         model.addAttribute("seances", seanceRepository.findAll());
@@ -163,8 +166,13 @@ public class WebController {
     @GetMapping("/listMovieProjection")
     public String getMovieProjection(@RequestParam(defaultValue = "0") int page
             ,@RequestParam(defaultValue = "10") int size
-            ,@RequestParam(defaultValue = "") String keyword,Model model){
-       Page<MovieProjection> movieProjectionPages = movieProjectionRepository.findAll(PageRequest.of(page,size));
+            ,@RequestParam(defaultValue = "-1") Double keyword,Model model){
+        Page<MovieProjection> movieProjectionPages;
+        if (keyword == -1)
+            movieProjectionPages = movieProjectionRepository.findAll(PageRequest.of(page,size));
+        else
+            movieProjectionPages = movieProjectionRepository.findAllByPriceOrderByPrice(keyword,PageRequest.of(page,size));
+
         model.addAttribute("movieProjections",movieProjectionPages.getContent());
         model.addAttribute("currentPage",page);
         model.addAttribute("size",size);
